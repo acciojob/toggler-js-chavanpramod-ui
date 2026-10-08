@@ -1,19 +1,24 @@
-//your JS code here. If required.
-const checkboxes = document.querySelectorAll(".toggle-checkbox");
+const good = document.getElementById("good");
+const cheap = document.getElementById("cheap");
+const fast = document.getElementById("fast");
 
-checkboxes.forEach(function (checkbox) {
+const toggles = document.querySelectorAll(".toggle");
 
-    checkbox.addEventListener("change", function () {
-        if (this.checked) {
+toggles.forEach(function (toggle) {
+    toggle.addEventListener("change", function () {
+        if (good.checked && cheap.checked && fast.checked) {
 
-            const checked = document.querySelectorAll(
-                ".toggle-checkbox:checked"
-            );
+            if (this === good) {
+                fast.checked = false;
+            }
 
-            if (checked.length > 2) {
-                checked[0].checked = false;
+            if (this === cheap) {
+                good.checked = false;
+            }
+
+            if (this === fast) {
+                cheap.checked = false;
             }
         }
     });
-
 });
